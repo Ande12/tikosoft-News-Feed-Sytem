@@ -2,6 +2,13 @@
     include_once 'header.php';
 ?>
 
+
+<?php
+            if (isset($_SESSION["useruid"])) {
+                echo "<H2 style ='color: #fff; margin: 100px;'>Hello there " . $_SESSION["useruid"]. "</H2>";
+            }
+            ?>
+
     <!-- popup forms starts -->
     <div class="blur-bg-overlay"></div>
     <div class="form-popup">

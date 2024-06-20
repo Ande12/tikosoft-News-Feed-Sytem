@@ -15,12 +15,12 @@
                         <label>Enter your full name</label>
                     </div>
                     <div class="input-field">
-                        <input type="text" name="uid" required>
-                        <label>Enter your username</label>
-                    </div>
-                    <div class="input-field">
                         <input type="text" name="email" required>
                         <label>Enter your email</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" name="uid" required>
+                        <label>Enter your username</label>
                     </div>
                     <div class="input-field">
                         <input type="password" name = "pwd" required>
@@ -43,6 +43,36 @@
                     Already have an account? 
                     <a href="#" id="login-link">Login</a>
                 </div>
+                <?php
+    // check if a url exist in a url - Post(data in url we can see), Get(data inside url we can see)
+    if(isset($_GET["error"])) {
+        if($_GET["error"] == "emptyinput") {
+            echo "<p>Fill in all fields!</p>";
+        } 
+        else if ($_GET["error"] == "invaliduid") {
+            echo "<p>Choose a proper username!</p>";
+        }
+        else if ($_GET["error"] == "invalidemail") {
+            echo "<p>Choose a proper email!</p>";
+        }
+        else if ($_GET["error"] == "passwordsdontmatch") {
+            echo "<p>Password doesn't match!</p>";
+        }
+        else if ($_GET["error"] == "stmtfailed") {
+            echo "<p>Something went wrong, try again!</p>";
+        }
+        else if ($_GET["error"] == "usernametaken") {
+            echo "<p>Username already taken!</p>";
+        }
+        else if ($_GET["error"] == "none") {
+            echo "<p>You have signed up!</p>";
+        }
+    }
+?>
             </div>
         </div>
+
+
+
+
   

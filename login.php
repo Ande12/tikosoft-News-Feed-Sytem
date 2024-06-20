@@ -9,13 +9,13 @@
             <!-- rightside login form  -->
             <div class="form-content">
                 <h2>LOG IN</h2>
-                <form action="includes/login.inc.php">
+                <form action="includes/login.inc.php" method="post">
                     <div class="input-field">
-                        <input type="text" name="email" required>
+                        <input type="text" name="uid" required>
                         <label>Email/Full name</label>
                     </div>
                     <div class="input-field">
-                        <input type="password" name="password" required>
+                        <input type="password" name="pwd" required>
                         <label>Password</label>
                     </div>
                     <a href="#" class="forgot-pass-link">Forgot password?</a>
@@ -25,7 +25,18 @@
                     Don't have an account?
                     <a href="#" id="signup-link">Signup</a>
                 </div>
+                <?php
+    // check if a url exist in a url - Post(data in url we can see), Get(data inside url we can see)
+    if(isset($_GET["error"])) {
+        if($_GET["error"] == "emptyinput") {
+            echo "<p>Fill in all fields!</p>";
+        } 
+        else if ($_GET["error"] == "wronglogin") {
+            echo "<p>Incorrect login information!</p>";
+        }
+    }
+?>
             </div>
         </div>
         <!-- signup form -->
-  
+        

@@ -14,7 +14,7 @@ if (isset($_POST["submit"])) {
     // error handling
 
     if (emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat) !== false) {
-        header("location: ../signup.php?error=emptyinput");
+        header("location: ../index.php?error=emptyinput");
         // stop script from running
         exit();
     }
@@ -36,7 +36,7 @@ if (isset($_POST["submit"])) {
         exit();
     }
 
-    createUser($conn, $name, $email, $pwd);
+    createUser($conn, $name, $email, $username, $pwd);
 } 
 else {
     header("location: ../signup.php");

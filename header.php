@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +27,16 @@
                 <li><a href="#">Blogs</a></li>
                 <li><a href="#">Contact us</a></li>
             </ul>
-            <button class="login-btn">LOG IN</button>
+            <?php
+            if (isset($_SESSION["useruid"])) {
+                echo "<button class='login-btn'>Proile</button>";
+                echo "<button class='login-btn'><a href = 'includes/logout.inc.php'>LOG OUT</a></button>";
+            }
+            else {
+                echo "<button class='login-btn'>LOG IN</button>";
+            }
+            ?>
+           
         </nav>
     </header>
 
