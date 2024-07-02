@@ -14,7 +14,7 @@
 </head>
 <body>
     <!-- header -->
-    <header>
+    <header class="bg-blue-400 w-full z-50 h-[15vh]">
         <nav class="navbar">
             <span class="hamburger-btn material-symbols-rounded">menu</span>
             <a href="#" class="logo">
@@ -39,6 +39,11 @@
            
         </nav>
     </header>
+
+
+
+
+
 
 
 
