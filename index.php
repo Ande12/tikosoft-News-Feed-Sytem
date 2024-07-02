@@ -1,7 +1,6 @@
 <?php 
     include_once 'header.php';
-?>
-
+?>  
 
 <?php
             if (isset($_SESSION["useruid"])) {
@@ -11,7 +10,7 @@
 
     <!-- popup forms starts -->
     <div class="blur-bg-overlay"></div>
-    <div class="form-popup">
+    <div class="form-popup rounded-md">
 
         <span class="close-btn material-symbols-rounded">close</span>
         <!-- login form -->

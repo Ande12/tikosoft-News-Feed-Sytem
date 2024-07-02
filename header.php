@@ -9,6 +9,7 @@
     <title>News Feed Sytem</title>
     <link rel="stylesheet" href="./newsfeed/css/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="./newsfeed/js/index.js"  defer></script>
 </head>
 <body>
@@ -21,16 +22,15 @@
             </a>
             <ul class="links">
                 <span class="close-btn material-symbols-rounded">close</span>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About us</a></li>
-                <li><a href="#">Articles</a></li>
-                <li><a href="#">Blogs</a></li>
-                <li><a href="#">Contact us</a></li>
+                <li><a href="index.php">Home</a></li>
+                <!-- <li><a href="#">About us</a></li> -->
+                <li><a href="comment.php">Articles</a></li>
+                <li><a href="blog.php">Blogs</a></li>
+                <!-- <li><a href="#">Contact us</a></li> -->
             </ul>
             <?php
             if (isset($_SESSION["useruid"])) {
-                echo "<button class='login-btn'>Proile</button>";
-                echo "<button class='login-btn'><a href = 'includes/logout.inc.php'>LOG OUT</a></button>";
+                echo "<button class='login-btn'><a class='' href = 'includes/logout.inc.php'>LOG OUT</a></button>";
             }
             else {
                 echo "<button class='login-btn'>LOG IN</button>";

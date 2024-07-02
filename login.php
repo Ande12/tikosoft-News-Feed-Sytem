@@ -1,42 +1,58 @@
-
-        <!-- login form -->
-        <div class="form-box login">
-            <!-- leftside login form -->
-            <div class="form-details">
-                <h2>Welcome Back</h2>
-                <p>Please log in using your personal information to stay connected with us.</p>
-            </div>
-            <!-- rightside login form  -->
-            <div class="form-content">
-                <h2>LOG IN</h2>
-                <form action="includes/login.inc.php" method="post">
-                    <div class="input-field">
-                        <input type="text" name="uid" required>
-                        <label>Email/Full name</label>
-                    </div>
-                    <div class="input-field">
-                        <input type="password" name="pwd" required>
-                        <label>Password</label>
-                    </div>
-                    <a href="#" class="forgot-pass-link">Forgot password?</a>
-                    <button type="submit" name="submit">Log In</button>
-                </form>
-                <div class="bottom-link">
-                    Don't have an account?
-                    <a href="#" id="signup-link">Signup</a>
-                </div>
-                <?php
-    // check if a url exist in a url - Post(data in url we can see), Get(data inside url we can see)
-    if(isset($_GET["error"])) {
-        if($_GET["error"] == "emptyinput") {
-            echo "<p>Fill in all fields!</p>";
-        } 
-        else if ($_GET["error"] == "wronglogin") {
-            echo "<p>Incorrect login information!</p>";
-        }
-    }
-?>
-            </div>
+<div class="form-container h-[80vh] login">
+    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+            <h2 class="text-center text-4xl font-semibold">Login</h2>
         </div>
-        <!-- signup form -->
-        
+
+        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+            <form class="space-y-6" action="includes/login.inc.php" method="post">
+                <div>
+                    <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
+                    <div class="mt-2">
+                        <input id="email" name="uid" type="email" autocomplete="email" required
+                            class="block w-full rounded-md p-4  border-0 outline-none py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-300 sm:text-sm sm:leading-6">
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex items-center justify-between">
+                        <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
+                        <div class="text-sm">
+                            <a href="#" class="font-semibold text-blue-400 hover:text-indigo-500">Forgot password?</a>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <input name="pwd" type="password" autocomplete="current-password" required
+                            class="p-4 block w-full rounded-md outline-none border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-300 sm:text-sm sm:leading-6">
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit" name="submit"
+                        class=" flex w-full justify-center rounded-md bg-blue-400  px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign
+                        in</button>
+                </div>
+            </form>
+
+            <p class="mt-10 text-center text-sm text-gray-500">
+                Not a member?
+                <a href="#" class="font-semibold leading-6 text-blue-400 hover:text-indigo-500">Start a full trial</a>
+            </p>
+            <div>
+                <button class="w-full bottom-link">
+                    <a id="signup-link" class="flex w-full justify-center rounded-md bg-blue-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign
+                    up</a></button>
+            </div>
+            <?php
+            // check if a url exist in a url - Post(data in url we can see), Get(data inside url we can see)
+            if (isset($_GET["error"])) {
+                if ($_GET["error"] == "emptyinput") {
+                    echo "<p>Fill in all fields!</p>";
+                } else if ($_GET["error"] == "wronglogin") {
+                    echo "<p>Incorrect login information!</p>";
+                }
+            }
+            ?>
+        </div>
+    </div>
+</div>

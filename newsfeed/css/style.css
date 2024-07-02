@@ -155,7 +155,7 @@ header {
 }
 
 .signup .form-details {
-    padding: 0 20px;
+    padding: 0 40px;
     background: url("../images/register-2.jpg");
     background-position: center;
     background-size: cover;
@@ -247,7 +247,7 @@ form button:hover {
     display: none;
 }
 
-.form-popup.show-signup .signup {
+.form-popup.show-signup {
     display: flex;
 }
 .signup .policy-text {

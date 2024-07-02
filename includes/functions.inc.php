@@ -1,53 +1,54 @@
 <?php
 // function to check for empty fields
-function emptyInputSignup($name, $email, $username, $pwd,  $pwdRepeat) {
+function emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat)
+{
     $result;
     if (empty($name) || empty($email) || empty($username) || empty($pwd) || empty($pwdRepeat)) {
         $result = true;
-    }
-     else{
+    } else {
         $result = false;
-     }
-     return $result;
+    }
+    return $result;
 }
 
 // checking for characters
-function invalidUid($username) {
+function invalidUid($username)
+{
     $result;
     if (!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
         $result = true;
-    }
-     else{
+    } else {
         $result = false;
-     }
-     return $result;
+    }
+    return $result;
 }
 
 // checking for wrong email format
-function invalidemail($email)  {
+function invalidemail($email)
+{
     $result;
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $result = true;
-    }
-     else{
+    } else {
         $result = false;
-     }
-     return $result;
+    }
+    return $result;
 }
 
 // checking for wrong password format
-function pwdMatch($pwd, $pwdRepeat)  {
+function pwdMatch($pwd, $pwdRepeat)
+{
     $result;
     if ($pwd !== $pwdRepeat) {
         $result = true;
-    }
-     else{
+    } else {
         $result = false;
-     }
-     return $result;
+    }
+    return $result;
 }
 // checking if username exist
-function uidExists($conn, $username, $email) {
+function uidExists($conn, $username, $email)
+{
     // sending in the usern
     $sql = "SELECT * FROM users WHERE userUid = ? OR userEmail = ?;";
     // prepared statement for security to prevent code injection into our database
@@ -62,7 +63,7 @@ function uidExists($conn, $username, $email) {
     $resultData = mysqli_stmt_get_result($stmt);
     // fetching data
     if ($row = mysqli_fetch_assoc($resultData)) {
-         return $row;
+        return $row;
     } else {
         $result = false;
         return $result;
@@ -70,7 +71,8 @@ function uidExists($conn, $username, $email) {
     mysql_stmt_close($stmt);
 }
 
-function createUser($conn, $name, $email, $username, $pwd) {
+function createUser($conn, $name, $email, $username, $pwd)
+{
     // sending in the usern
     $sql = "INSERT INTO users (userName, userEmail, userUid, userPwd) VALUES (?, ?, ?,?)";
     // prepared statement for security to prevent code injection into our database
@@ -89,19 +91,20 @@ function createUser($conn, $name, $email, $username, $pwd) {
     exit();
 }
 
-function emptyInputLogin( $username, $pwd) {
+function emptyInputLogin($username, $pwd)
+{
     $result;
     if (empty($username) || empty($pwd)) {
         $result = true;
-    }
-     else{
+    } else {
         $result = false;
-     }
-     return $result;
+    }
+    return $result;
 }
 
-function loginUser($conn, $username, $pwd){
-    $uidExists = uidExists($conn, $username,  $username);
+function loginUser($conn, $username, $pwd)
+{
+    $uidExists = uidExists($conn, $username, $username);
 
     if ($uidExists === false) {
         header("location: ../index.php?error=wronglogin");
@@ -114,8 +117,7 @@ function loginUser($conn, $username, $pwd){
     if ($checkedPwd === false) {
         header("location: ../index.php?error=wronglogin");
         exit();
-    } 
-    else if ($checkedPwd === true) {
+    } else if ($checkedPwd === true) {
         session_start();
         $_SESSION["userid"] = $uidExists["userId"];
         $_SESSION["useruid"] = $uidExists["userUid"];

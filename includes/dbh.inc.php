@@ -6,6 +6,9 @@ $dbPassword = "";
 $dbName = "newsfeedsystem";
 
 $conn = mysqli_connect($serverName, $dbUserName, $dbPassword, $dbName);
+// $conn = new PDO( "mysql:host$serverName, $dbUserName, $dbPassword, $dbName);
+
+
 
 // checking for connection errors
 if (!$conn){
