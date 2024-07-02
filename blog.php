@@ -65,68 +65,81 @@ include_once "includes/dbh.inc.php";
                 <div
                     class="mx-auto mt-10 w-full  gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0">
                     <?php
-                // query
-                $query = "select * from blogs";
+                    // query
+                    $query = "select * from blogs";
 
-                $result = mysqli_query($conn, $query);
+                    $result = mysqli_query($conn, $query);
 
-                if (!$result) {
-                    # code...
-                    die("query Failed");
-                } else {
-                    // echo "Success <br>";
-                    // print_r($result);
+                    if (!$result) {
+                        # code...
+                        die("query Failed");
+                    } else {
+                        // echo "Success <br>";
+                        // print_r($result);
+                    
+                        // for the info to display
+                        while ($row = mysqli_fetch_assoc($result)) { ?>
+                            <article class=" items-start justify-between w-full border rounded-md p-5">
+                                <div class="flex items-center gap-x-4 text-xs">
+                                    <?php
+                                    date_default_timezone_set('Africa/Douala'); // Set your timezone
+                                    $currentDate = date('Y-m-d'); // Format for datetime attribute
+                                    $displayDate = date('M d, Y'); // Format for display
+                                    ?>
 
-                    // for the info to display
-                    while ($row = mysqli_fetch_assoc($result)) {?>
-                    <article class=" items-start justify-between w-full border rounded-md p-5">
-                        <div class="flex items-center gap-x-4 text-xs">
-                            <time datetime="2020-03-16" class="text-gray-500">Mar 16, 2020</time>
-                            <a href="#"
-                                class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">Marketing</a>
-                        </div>
-                        <div class="group relative">
-                            <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                                <a href="#">
-                                    <span class="absolute inset-0"></span>
-                                    <?php echo $row['title']?>
-                                </a>
-                            </h3>
-                            <div class="block justify-between w-[90%] sm:flex">
-                                <p class=" mt-5 w-[70%] line-clamp-3 text-sm leading-6 text-gray-600">Illo sint
-                                <?php echo $row['content']?></p>
-                                <div class="sm:mt-10">
-                                    <div class="flex justify-center overflow-hidden">
-                                    <i class="fa-solid fa-user"></i>
-                                    <i class="fa-solid fa-user"></i>
+                                    <time datetime="<?php echo $currentDate; ?>"
+                                        class="text-gray-500"><?php echo $displayDate; ?></time>
 
+                                    <!-- <time datetime="2020-03-16" class="text-gray-500">Mar 16, 2020</time> -->
+                                    <a href="#"
+                                        class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">Marketing</a>
+                                </div>
+                                <div class="group relative">
+                                    <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+                                        <a href="#">
+                                            <span class="absolute inset-0"></span>
+                                            <?php echo $row['title'] ?>
+                                        </a>
+                                    </h3>
+                                    <div class="block justify-between w-[90%] sm:flex">
+                                        <p class=" mt-5 w-[70%] line-clamp-3 text-sm leading-6 text-gray-600">
+                                            <?php echo $row['content'] ?>
+                                        </p>
+                                        <div class="sm:mt-10">
+                                            <div class="flex justify-center overflow-hidden">
+                                                <i class="fa-solid fa-user"></i>
+                                                <i class="fa-solid fa-user"></i>
+
+
+                                            </div>
+                                            <p class="text-sm text-red-300">Comment <i
+                                                    class="fa-solid text-sm fa-arrow-right"></i></p>
+                                            <button class="text-green-500"><a class="text-green-500"
+                                                    href="includes/delete.php?id=<?php echo $row["blog_id"] ?>">Edit</a></button>
+                                            <a class="text-red-500"
+                                                href="includes/delete.php?id=<?php echo $row["blog_id"] ?>">Delete</a>
+                                        </div>
 
                                     </div>
-                                    <p class="text-sm text-red-300">Comment <i
-                                            class="fa-solid text-sm fa-arrow-right"></i></p>
-                                    <button class="text-green-500"><a class="text-green-500" href="includes/delete.php?id=<?php echo $row["blog_id"] ?>">Edit</a></button>
-                                    <a class="text-red-500" href="includes/delete.php?id=<?php echo $row["blog_id"] ?>">Delete</a>
+
                                 </div>
-
-                            </div>
-
-                        </div>
-                        <div class="relative mt-8 flex items-center gap-x-4">
-                        <i class="fa-solid fa-user"></i>
-                            <div class="text-sm leading-6">
-                                <p class="font-semibold text-gray-900">
-                                    <a href="#">
-                                        <span class="absolute inset-0"></span>
-                                        <?php echo $row['username']?>
-                                    </a>
-                                </p>
-                                <p class="text-gray-600">Co-Founder / CTO</p>
-                            </div>
-                        </div>
-                    </article>
-                    <?php
-                    };
-                }?>
+                                <div class="relative mt-8 flex items-center gap-x-4">
+                                    <i class="fa-solid fa-user"></i>
+                                    <div class="text-sm leading-6">
+                                        <p class="font-semibold text-gray-900">
+                                            <a href="#">
+                                                <span class="absolute inset-0"></span>
+                                                <?php echo $row['username'] ?>
+                                            </a>
+                                        </p>
+                                        <p class="text-gray-600">Co-Founder / CTO</p>
+                                    </div>
+                                </div>
+                            </article>
+                            <?php
+                        }
+                        ;
+                    } ?>
                 </div>
             </div>
         </div>
@@ -135,7 +148,8 @@ include_once "includes/dbh.inc.php";
         <div id="popForm"
             class="flex duration-200 absolute top-0 z-50 min-h-full flex-col bg-white sm:w-[100%] w-[90%] m-auto rounded-sm justify-center px-6 py-12 lg:px-8">
             <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-                <h2 class="mt-10 text-center md:text-4xl text-2xl font-bold leading-9 tracking-tight text-gray-900">Post your Blog
+                <h2 class="mt-10 text-center md:text-4xl text-2xl font-bold leading-9 tracking-tight text-gray-900">Post
+                    your Blog
                 </h2>
             </div>
 
@@ -151,8 +165,7 @@ include_once "includes/dbh.inc.php";
 
                     <div>
                         <div class="flex items-center justify-between">
-                            <label for="title"
-                                class="block text-sm font-medium leading-6 text-gray-900">Title</label>
+                            <label for="title" class="block text-sm font-medium leading-6 text-gray-900">Title</label>
                         </div>
                         <div class="mt-2">
                             <input id="title" name="title" autocomplete="current-password" required

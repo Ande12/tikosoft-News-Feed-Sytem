@@ -1,4 +1,4 @@
-<body?php
+<!-- <body?php
     session_start();
 ?>
 <!DOCTYPE html>
@@ -12,33 +12,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="./newsfeed/js/index.js"  defer></script>
 </head>
-<body>
+<body> -->
     <!-- header -->
-    <header>
-        <nav class="navbar bg-black z-50">
-            <span class="hamburger-btn material-symbols-rounded">menu</span>
-            <a href="#" class="logo">
-                <h2>NewsFeed</h2>
-            </a>
-            <ul class="links">
-                <span class="close-btn material-symbols-rounded">close</span>
-                <li><a href="index.php">Home</a></li>
-                <!-- <li><a href="#">About us</a></li> -->
-                <li><a href="comment.php">Articles</a></li>
-                <li><a href="blog.php">Blogs</a></li>
-                <!-- <li><a href="#">Contact us</a></li> -->
-            </ul>
-            <?php
-            if (isset($_SESSION["useruid"])) {
-                echo "<button class='login-btn'><a class='' href = 'includes/logout.inc.php'>LOG OUT</a></button>";
-            }
-            else {
-                echo "<button class='login-btn'>LOG IN</button>";
-            }
-            ?>
-           
-        </nav>
-    </header>
+    <?php 
+    include_once 'header.php';
+?>  
+
     <section class="bg-white dark:bg-gray-900 mt-20 py-8 lg:py-16 antialiased">
   <div class="max-w-2xl mx-auto px-4">
       <div class="flex justify-between items-center mb-6">
@@ -52,7 +31,7 @@
                 placeholder="Write a comment..." required></textarea>
         </div>
         <button type="submit"
-            class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+            class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-400 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-blue-500">
             Post comment
         </button>
     </form>
